@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>qmdx00</string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>6857C69A-3FA1-4581-8EAA-AB4E4D3EDE5B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>79873203-DC0F-43FB-8EC9-7601C147EAAE</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>783C8FFD-4518-4352-BB42-723A1CF28631</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>D61A6993-6D0E-4785-9B18-DD5F3C82055A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>79873203-DC0F-43FB-8EC9-7601C147EAAE</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>783C8FFD-4518-4352-BB42-723A1CF28631</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>wimi</string>
+	<key>description</key>
+	<string>nginx commands</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>nginx</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>nginx {query}</string>
+				<key>title</key>
+				<string>NGINX</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>D61A6993-6D0E-4785-9B18-DD5F3C82055A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>fixedorder</key>
+				<false/>
+				<key>items</key>
+				<string>[{"title":"nginx start","arg":"start"},{"title":"nginx stop","arg":"stop"},{"title":"nginx reload","arg":"reload"},{"title":"nginx reopen","arg":"reopen"}]</string>
+				<key>keyword</key>
+				<string>ngx</string>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string></string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.listfilter</string>
+			<key>uid</key>
+			<string>6857C69A-3FA1-4581-8EAA-AB4E4D3EDE5B</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>command=$1
+
+case $command in  
+    "start")  
+        echo -e $passwd | sudo -S -k $nginx
+        echo $command
+        ;;  
+    "stop")  
+        echo -e $passwd | sudo -S -k $nginx -s stop
+        echo $command
+        ;;  
+    "reload")  
+        echo -e $passwd | sudo -S -k $nginx -s stop
+        echo $command
+        ;;  
+    "reopen")  
+        echo -e $passwd | sudo -S -k $nginx -s stop
+        echo $command
+        ;;
+esac</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>783C8FFD-4518-4352-BB42-723A1CF28631</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>{query}</string>
+				<key>passthroughargument</key>
+				<true/>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>79873203-DC0F-43FB-8EC9-7601C147EAAE</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Alfred to start or stop nginx easily.
+
+Variables
+- nginx: your nginx executable file location.
+- passwd: your sudo password.</string>
+	<key>uidata</key>
+	<dict>
+		<key>6857C69A-3FA1-4581-8EAA-AB4E4D3EDE5B</key>
+		<dict>
+			<key>xpos</key>
+			<integer>70</integer>
+			<key>ypos</key>
+			<integer>60</integer>
+		</dict>
+		<key>783C8FFD-4518-4352-BB42-723A1CF28631</key>
+		<dict>
+			<key>xpos</key>
+			<integer>315</integer>
+			<key>ypos</key>
+			<integer>60</integer>
+		</dict>
+		<key>79873203-DC0F-43FB-8EC9-7601C147EAAE</key>
+		<dict>
+			<key>xpos</key>
+			<integer>235</integer>
+			<key>ypos</key>
+			<integer>90</integer>
+		</dict>
+		<key>D61A6993-6D0E-4785-9B18-DD5F3C82055A</key>
+		<dict>
+			<key>xpos</key>
+			<integer>495</integer>
+			<key>ypos</key>
+			<integer>60</integer>
+		</dict>
+	</dict>
+	<key>variables</key>
+	<dict>
+		<key>nginx</key>
+		<string>/usr/local/nginx/sbin/nginx</string>
+		<key>passwd</key>
+		<string>qmdx00</string>
+	</dict>
+	<key>variablesdontexport</key>
+	<array>
+		<string>nginx</string>
+		<string>passwd</string>
+	</array>
+	<key>version</key>
+	<string>1.0.0</string>
+	<key>webaddress</key>
+	<string>https://github.com/qmdx00/alfred-nginx-workflow</string>
+</dict>
+</plist>
